@@ -7,14 +7,12 @@ import MovieDetail from "./pages/MovieDetail";
 function App() {
     return (
         <BrowserRouter>
-            <Layout>
-
-                <Routes>
+            <Routes>
+                <Route element={<Layout />}>
                     <Route path="/" element={<Home />} />
                     <Route path="/movies/:id" element={<MovieDetail />} />
-                </Routes>
-
-            </Layout>
+                </Route>
+            </Routes>
         </BrowserRouter>
     );
 }
