@@ -1,35 +1,35 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Home() {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-
         fetch("http://localhost:3000/movies")
-            .then((res) => res.json())
-            .then((data) => {
-                setMovies(data);
-            })
-            .catch((error) => {
-                console.error("Errore nel recupero dei film:", error);
-            });
+            .then(res => res.json())
+            .then(data => setMovies(data));
     }, []);
 
     return (
-        <div>
-            <h1>Lista Film</h1>
+        <div className="container mt-4">
+            <h1>Film</h1>
 
-            <ul>
-                {movies.map((movie) => (
-                    <li key={movie.id}>
-                        <img
-                            src={"http://localhost:3000/" + movie.image}
-                            alt={movie.title}
-                        />
-                        <strong>{movie.director}</strong>
-                    </li>
+            <div className="d-flex flex-wrap gap-3">
+                {movies.map(movie => (
+                    <div className="card p-3" key={movie.id} style={{ width: "200px" }}>
+                        <img>{movie.image}</img>
+                        <h5>{movie.title}</h5>
+                        <p>Regia: {movie.director}</p>
+
+                        <Link
+                            to={`/review/${movie.id}`}
+                            className="btn btn-primary"
+                        >
+                            Aggiungi recensione
+                        </Link>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }
