@@ -13,13 +13,12 @@ function MovieDetail() {
             .then(res => res.json())
             .then(data => {
                 setMovie(data);
-                setReviews(data.reviews);
+                setReviews(data.reviews || []); // ⭐ FIX
             });
     }, [id]);
 
     if (!movie) return <p>Caricamento...</p>;
 
-    // funzione per aggiungere recensione nuova
     function addReview(newReview) {
         setReviews([...reviews, newReview]);
     }
@@ -41,7 +40,6 @@ function MovieDetail() {
                 ))}
             </ul>
 
-            {/* FORM */}
             <ReviewForm movieId={id} addReview={addReview} />
         </div>
     );
