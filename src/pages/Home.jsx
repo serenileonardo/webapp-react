@@ -15,20 +15,32 @@ function Home() {
             <h1>Film</h1>
 
             <div className="d-flex flex-wrap gap-3">
-                {movies.map(movie => (
-                    <div className="card p-3" key={movie.id} style={{ width: "200px" }}>
-                        <img>{movie.image}</img>
-                        <h5>{movie.title}</h5>
-                        <p>Regia: {movie.director}</p>
 
-                        <Link
-                            to={`/review/${movie.id}`}
-                            className="btn btn-primary"
-                        >
-                            Aggiungi recensione
-                        </Link>
+                {movies.map(movie => (
+                    <div className="card" key={movie.id} style={{ width: "200px" }}>
+
+
+                        <img
+                            src={"http://localhost:3000/" + movie.image}
+                            alt={movie.title}
+                            className="card-img-top"
+                        />
+
+                        <div className="card-body">
+                            <h5>{movie.title}</h5>
+                            <p>Regia: {movie.director}</p>
+
+                            <Link
+                                to={`/review/${movie.id}`}
+                                className="btn btn-primary"
+                            >
+                                Recensisci
+                            </Link>
+                        </div>
+
                     </div>
                 ))}
+
             </div>
         </div>
     );
