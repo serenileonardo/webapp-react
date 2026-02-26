@@ -23,10 +23,10 @@ function Home() {
                 {movies.map((movie) => (
                     <li key={movie.id}>
                         <img
-                            src={"http://localhost:3000/images/" + movie.image}
+                            src={"http://localhost:3000/" + movie.image}
                             alt={movie.title}
                         />
-                        — {movie.director}
+                        <strong>{movie.director}</strong>
                     </li>
                 ))}
             </ul>
