@@ -22,6 +22,7 @@ function Home() {
             <ul>
                 {movies.map((movie) => (
                     <li key={movie.id}>
+                        <img src={movie.image} />
                         <strong>{movie.title}</strong> — {movie.director}
                     </li>
                 ))}
