@@ -17,14 +17,17 @@ function Home() {
             <div className="d-flex flex-wrap gap-3">
 
                 {movies.map(movie => (
+
                     <div className="card" key={movie.id} style={{ width: "200px" }}>
 
 
                         <img
-                            src={"http://localhost:3000/" + movie.image}
+                            src={movie.image}
                             alt={movie.title}
                             className="card-img-top"
+                            style={{ width: "200px", height: "auto" }}
                         />
+
 
                         <div className="card-body">
                             <h5>{movie.title}</h5>
